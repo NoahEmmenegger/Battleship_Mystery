@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Battleship_Mystery.Business
 {
-    class Ship
+    public class Ship
     {
         public List<Field> Fields { get; set; }
     }

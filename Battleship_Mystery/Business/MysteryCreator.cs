@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Battleship_Mystery.Business
 {
-    class MysteryCreator
+    public class MysteryCreator
     {
         public int NumberOfCollumns { get; set; }
         public int NumberOfRows { get; set; }

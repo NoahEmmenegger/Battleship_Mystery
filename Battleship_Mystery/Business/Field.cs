@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Battleship_Mystery.Business
 {
-    class Field
+    public class Field
     {
         public FieldStatus Status { get; set; }
         public bool IsShipField { get; set; }
