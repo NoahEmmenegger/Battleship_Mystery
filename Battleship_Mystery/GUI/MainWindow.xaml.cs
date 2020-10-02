@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Battleship_Mystery.Business;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;

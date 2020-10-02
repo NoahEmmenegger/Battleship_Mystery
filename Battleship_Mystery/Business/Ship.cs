@@ -6,6 +6,12 @@ namespace Battleship_Mystery.Business
 {
     public class Ship
     {
+        public int Size { get; set; }
         public List<Field> Fields { get; set; }
+
+        public Ship(int size)
+        {
+            Size = size;
+        }
     }
 }
