@@ -1,5 +1,4 @@
-﻿using Battleship_Mystery.GUI.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,19 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Battleship_Mystery.GUI
+namespace Battleship_Mystery.GUI.Pages
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für MysteryConfiguration.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MysteryConfiguration : Page
     {
-        public MainWindow()
+        public MysteryConfiguration()
         {
             InitializeComponent();
-            Main.Content = new MysteryConfiguration();
         }
     }
 }
