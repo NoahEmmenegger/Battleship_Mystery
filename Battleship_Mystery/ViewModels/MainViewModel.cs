@@ -9,18 +9,6 @@ namespace Battleship_Mystery.ViewModels
 {
     public class MainViewModel : PropertyChangedClass
     {
-        private MysteryCreator _mysteryCreator = new MysteryCreator();
-        public MysteryCreator MysteryCreator
-        {
-            get
-            {
-                return _mysteryCreator;
-            }
-            set
-            {
-                _mysteryCreator = value;
-                OnPropertyChanged();
-            }
-        }
+
     }
 }
