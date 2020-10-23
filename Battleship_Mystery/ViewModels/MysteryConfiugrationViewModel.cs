@@ -32,7 +32,7 @@ namespace Battleship_Mystery.ViewModels
 
         public void GenerateMystery(object parameter)
         {
-
+            _mysteryCreator.Create();
         }
     }
 }
