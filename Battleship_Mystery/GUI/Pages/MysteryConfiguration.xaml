@@ -32,5 +32,7 @@
         <Slider Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"></Slider>
         <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Schiffe:</Label>
         <Slider Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"></Slider>
+
+        <Button Command="{Binding GenerateMysteryCommand}" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Center" Width="90" Height="40"  Margin="5">Erstellen</Button>
     </Grid>
 </Page>

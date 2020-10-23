@@ -13,12 +13,18 @@
     <Compile Update="GUI\Pages\MysteryConfiguration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\Pages\PlayingField.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="GUI\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Pages\MysteryConfiguration.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Pages\PlayingField.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
