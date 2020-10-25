@@ -27,15 +27,15 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Spalten:</Label>
-        <Slider Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Value="{Binding Path=MysteryCreator.NumberOfCollumns}"></Slider>
-        <Label Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfCollumns}"></Label>
+        <Slider Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Minimum="2" Maximum="10" Value="{Binding Path=MysteryCreator.NumberOfColumns}"></Slider>
+        <Label Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfColumns}"></Label>
         
         <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Zeilen:</Label>
-        <Slider Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Value="{Binding Path=MysteryCreator.NumberOfRows}"></Slider>
+        <Slider Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Minimum="2" Maximum="10" Value="{Binding Path=MysteryCreator.NumberOfRows}"></Slider>
         <Label Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfRows}"></Label>
         
         <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Schiffe:</Label>
-        <Slider Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Value="{Binding Path=MysteryCreator.NumberOfShips}"></Slider>
+        <Slider Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Minimum="1" Maximum="13" Width="200" Value="{Binding Path=MysteryCreator.NumberOfShips}"></Slider>
         <Label Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfShips}"></Label>
 
         <Button Command="{Binding GenerateMysteryCommand}" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Center" Width="90" Height="40"  Margin="5">Erstellen</Button>

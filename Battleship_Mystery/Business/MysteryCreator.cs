@@ -7,19 +7,24 @@ namespace Battleship_Mystery.Business
 {
     public class MysteryCreator : PropertyChangedClass
     {
-        private int numberOfCollums;
+        private int numberOfColumns;
         private int numberOfRows;
         private int numberOfShips;
 
-        public int NumberOfCollumns
+        public int NumberOfColumns
         {
             get
             {
-                return numberOfCollums;
+                return numberOfColumns;
             }
             set
             {
-                numberOfCollums = value;
+                numberOfColumns = value;
+                while ((numberOfColumns + 1) * (NumberOfRows + 1) < NumberOfShips * 9)
+                {
+                    numberOfShips--; 
+                    OnPropertyChanged(nameof(NumberOfShips));
+                }
                 OnPropertyChanged();
             }
         }
@@ -33,6 +38,11 @@ namespace Battleship_Mystery.Business
             set
             {
                 numberOfRows = value;
+                while ((NumberOfColumns + 1) * (numberOfRows + 1) < NumberOfShips * 9)
+                {
+                    numberOfShips--;
+                    OnPropertyChanged(nameof(NumberOfShips));
+                }
                 OnPropertyChanged();
             }
         }
@@ -44,8 +54,11 @@ namespace Battleship_Mystery.Business
             }
             set
             {
-                numberOfShips = value;
-                OnPropertyChanged();
+                if((NumberOfColumns + 1) * (NumberOfRows + 1) >= value * 9)
+                {
+                    numberOfShips = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -142,7 +155,7 @@ namespace Battleship_Mystery.Business
         protected List<Field> GetFieldList()
         {
             List<Field> fields = new List<Field>();
-            for (int y =1;y <= NumberOfCollumns; y++)
+            for (int y =1;y <= NumberOfColumns; y++)
             {
                 for (int x = 1; x <= NumberOfRows; x++)
                 {
