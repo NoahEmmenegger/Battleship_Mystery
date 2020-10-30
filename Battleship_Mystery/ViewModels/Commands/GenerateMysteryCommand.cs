@@ -5,24 +5,11 @@ using System.Windows.Input;
 
 namespace Battleship_Mystery.ViewModels.Commands
 {
-    public class GenerateMysteryCommand : ICommand
+    public class GenerateMysteryCommand : BaseCommand
     {
-        private Action<object> _excute;
-        public event EventHandler CanExecuteChanged;
-
-        public GenerateMysteryCommand (Action<object> execute)
+        public GenerateMysteryCommand(Action<object> execute) : base(execute)
         {
-            _excute = execute;
-        }
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            _excute.Invoke(parameter);
         }
     }
 }
