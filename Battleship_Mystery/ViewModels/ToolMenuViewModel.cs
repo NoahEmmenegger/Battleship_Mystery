@@ -10,13 +10,16 @@ namespace Battleship_Mystery.ViewModels
         public HelpCommand HelpCommand { get; set; }
         public SaveVirtualMysteryCommand SaveVirtualMysteryCommand { get; set; }
         public LoadVirtualMysteryCommand LoadVirtualMysteryCommand { get; set; }
+        public SafePDFCommand SafePDFCommand { get; set; }
+        public SafePDFSolutionCommand SafePDFSolutionCommand { get; set;}
 
         public ToolMenuViewModel()
         {
             HelpCommand = new HelpCommand(GetHelp);
             SaveVirtualMysteryCommand = new SaveVirtualMysteryCommand(SaveVirtualMystery);
             LoadVirtualMysteryCommand = new LoadVirtualMysteryCommand(LoadVirtualMystery);
-
+            SafePDFCommand = new SafePDFCommand(SavePDF);
+            SafePDFSolutionCommand = new SafePDFSolutionCommand(SavePDFSolution);
         }
 
         private void GetHelp(object parameter)
@@ -30,6 +33,16 @@ namespace Battleship_Mystery.ViewModels
         }
 
         private void LoadVirtualMystery(object parameter)
+        {
+
+        }
+
+        private void SavePDF(object parameter)
+        {
+
+        }
+
+        private void SavePDFSolution(object parameter)
         {
 
         }

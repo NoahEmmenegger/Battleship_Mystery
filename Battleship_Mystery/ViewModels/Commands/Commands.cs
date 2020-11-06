@@ -36,5 +36,21 @@ namespace Battleship_Mystery.ViewModels.Commands
         }
     }
 
+    public class SafePDFCommand : BaseCommand
+    {
+        public SafePDFCommand(Action<object> execute) : base(execute)
+        {
+
+        }
+    }
+
+    public class SafePDFSolutionCommand : BaseCommand
+    {
+        public SafePDFSolutionCommand(Action<object> execute) : base(execute)
+        {
+
+        }
+    }
+
 
 }
