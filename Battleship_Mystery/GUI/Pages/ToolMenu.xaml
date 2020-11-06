@@ -4,16 +4,25 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Battleship_Mystery.GUI.Pages"
+      xmlns:v="clr-namespace:Battleship_Mystery.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="40" d:DesignWidth="800"
       Title="ToolMenu">
 
+    <Page.DataContext>
+        <v:ToolMenuViewModel/>
+    </Page.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="1" HorizontalAlignment="Right" Margin="3" Width="100">Hilfe</Button>
+        <Button Command="{Binding HelpCommand}" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Width="100">Hilfe</Button>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding SaveVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Width="100">Speichern</Button>
+            <Button Command="{Binding LoadVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Width="100">Laden</Button>
+        </StackPanel>
     </Grid>
 </Page>
