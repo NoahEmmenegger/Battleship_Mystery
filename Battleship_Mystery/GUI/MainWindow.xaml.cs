@@ -1,4 +1,5 @@
 ﻿using Battleship_Mystery.GUI.Pages;
+using Battleship_Mystery.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,10 +19,16 @@ namespace Battleship_Mystery.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindow singelton;
         public MainWindow()
         {
             InitializeComponent();
             Main.Content = new MysteryConfiguration();
+        }
+
+        public void ShowPlayingField(PlayingFieldViewModel viewModel)
+        {
+            Main.Content = new PlayingField(viewModel);
         }
     }
 }

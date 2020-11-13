@@ -1,4 +1,5 @@
 ﻿using Battleship_Mystery.Business;
+using Battleship_Mystery.GUI;
 using Battleship_Mystery.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,10 @@ namespace Battleship_Mystery.ViewModels
 
         public void GenerateMystery(object parameter)
         {
-            _mysteryCreator.Create();
+            PlayingFieldViewModel playingFieldViewModel = new PlayingFieldViewModel(_mysteryCreator.Create());
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            mainWindow.ShowPlayingField(playingFieldViewModel);
         }
     }
 }

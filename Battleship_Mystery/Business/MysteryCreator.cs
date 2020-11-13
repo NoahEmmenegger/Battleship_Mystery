@@ -51,7 +51,7 @@ namespace Battleship_Mystery.Business
 
         public Mystery Create()
         {
-            Mystery mystery = new Mystery();
+            Mystery mystery = new Mystery(this);
 
             //init Fields and add to mystery
             List<Field> fieldList = GetFieldList();
@@ -60,11 +60,17 @@ namespace Battleship_Mystery.Business
             //init Ships and add to mystery
             foreach (Ship ship in shipList)
             {
-                Field randomFieldRoot = GetRandomValidField(fieldList);
+                List<Field> randomFieldRoots = new List<Field>();
+                while (randomFieldRoots.Count == 0)
+                {
+                    randomFieldRoots = GetRandomValidField(fieldList, ship.Size);
+                }
 
-
-                //save root field
-                GetFieldFromCoordinate(randomFieldRoot.XCoordinate, randomFieldRoot.YCoordinate, fieldList).IsShipField = true;
+                foreach (Field randomFieldRoot in randomFieldRoots)
+                {
+                    //save root field
+                    GetFieldFromCoordinate(randomFieldRoot.XCoordinate, randomFieldRoot.YCoordinate, fieldList).IsShipField = true;
+                }
             }
 
             mystery.FieldList = fieldList;
@@ -74,10 +80,12 @@ namespace Battleship_Mystery.Business
             return mystery;
         }
 
-        protected Field GetRandomValidField(List<Field> fields)
+        protected List<Field> GetRandomValidField(List<Field> fields, int shipSize)
         {
             Field randomField = null;
             Random random = new Random();
+            //Finde ein Feld solange bis ein valides Feld gefunden wurde
+
             while (randomField == null || !HasFreeFieldsArround(randomField, fields))
             {
                 int randomItem = random.Next(1, fields.Count + 1);
@@ -86,20 +94,98 @@ namespace Battleship_Mystery.Business
                     randomField = fields[randomItem];
                 }
             }
-            
-            return randomField;
+            return GetValidFieldsByShipLenght(randomField, shipSize, fields);
 
+        }
+
+        protected List<Field> GetValidFieldsByShipLenght(Field field, int size, List<Field> fields)
+        {
+            if (field == null) return null;
+            List<Field> upperFields = GetFieldsByDirection(field, size, fields, "up");
+            List<Field> leftFields = GetFieldsByDirection(field, size, fields, "left");
+            List<Field> downFields = GetFieldsByDirection(field, size, fields, "down");
+            List<Field> rightFields = GetFieldsByDirection(field, size, fields, "right");
+
+            var isUpAvailable = AreFieldsAvailable(upperFields, fields);
+            var isLeftAvailable = AreFieldsAvailable(leftFields, fields);
+            var isDownAvailable = AreFieldsAvailable(leftFields, fields);
+            var isRightAvailable = AreFieldsAvailable(leftFields, fields);
+
+            List<List<Field>> validFields = new List<List<Field>>();
+            if (isUpAvailable) validFields.Add(upperFields);
+            if (isLeftAvailable) validFields.Add(leftFields);
+            if (isDownAvailable) validFields.Add(downFields);
+            if (isRightAvailable) validFields.Add(rightFields);
+
+            if (validFields.Count <= 0) return new List<Field>();
+
+
+            Random random = new Random();
+            int index = random.Next(validFields.Count);
+            return validFields[index];
+        }
+
+        protected bool AreFieldsAvailable(List<Field> fields, List<Field> allFields)
+        {
+            foreach (Field field in fields)
+            {
+                if (field == null) return false;
+                if (field.IsShipField) return false;
+
+                var test = HasFreeFieldsArround(field, allFields);
+                if (!HasFreeFieldsArround(field, allFields)) return false;
+            }
+            return true;
+        }
+
+        protected List<Field> GetFieldsByDirection(Field field, int size, List<Field> fields, string direction)
+        {
+            List<Field> upperFields = new List<Field>();
+            upperFields.Add(field);
+            for (int i = 1; i < size; i++)
+            {
+                if(direction == "up") upperFields.Add(GetFieldAbove(upperFields[upperFields.Count - 1], fields));
+                if(direction == "left") upperFields.Add(GetFieldLeft(upperFields[upperFields.Count - 1], fields));
+                if(direction == "down") upperFields.Add(GetFieldDown(upperFields[upperFields.Count - 1], fields));
+                if(direction == "right") upperFields.Add(GetFieldRight(upperFields[upperFields.Count - 1], fields));
+            }
+            return upperFields;
+        }
+
+        protected Field GetFieldAbove(Field field, List<Field> fields)
+        {
+            if (field == null) return null;
+            return GetFieldFromCoordinate(field.XCoordinate, field.YCoordinate - 1, fields);
+        }
+
+        protected Field GetFieldLeft(Field field, List<Field> fields)
+        {
+            if (field == null) return null;
+            return GetFieldFromCoordinate(field.XCoordinate -1, field.YCoordinate, fields);
+        }
+
+        protected Field GetFieldDown(Field field, List<Field> fields)
+        {
+            if (field == null) return null;
+            return GetFieldFromCoordinate(field.XCoordinate, field.YCoordinate + 1, fields);
+        }
+
+        protected Field GetFieldRight(Field field, List<Field> fields)
+        {
+            if (field == null) return null;
+            return GetFieldFromCoordinate(field.XCoordinate + 1, field.YCoordinate, fields);
         }
 
         protected bool HasFreeFieldsArround(Field field, List<Field> fields)
         {
             if (field == null) return true;
-            foreach (Field fieldItem in GetFieldsArround(field, fields))
+            var fieldsArround = GetFieldsArround(field, fields);
+            foreach (Field fieldItem in fieldsArround)
             {
                 // Wenn field rand oder wasser ist, soll nichts passieren. Wenn es ein Shipfield ist dann soll er false returnen.
-                if (field != null)
+                if (fieldItem != null)
                 {
-                    if (field.IsShipField)
+                    if (fieldItem.IsShipField)
                     {
                         return false;
                     }
