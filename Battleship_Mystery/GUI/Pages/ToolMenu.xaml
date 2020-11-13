@@ -16,13 +16,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Command="{Binding HelpCommand}" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Width="100">Hilfe</Button>
+        <Button Command="{Binding HelpCommand}" Grid.Column="2" HorizontalAlignment="Right" Margin="3" Width="100">Hilfe</Button>
 
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding SaveVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Width="100">Speichern</Button>
             <Button Command="{Binding LoadVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Width="100">Laden</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"  Orientation="Horizontal">
+            <Button Command="{Binding SafePDFCommand}" HorizontalAlignment="Left" Margin="3" Width="100">PDF Speichern</Button>
+            <Button Command="{Binding SafePDFSolutionCommand}" HorizontalAlignment="Left" Margin="3" Width="130">PDF Lösung Speichern</Button>
         </StackPanel>
     </Grid>
 </Page>
