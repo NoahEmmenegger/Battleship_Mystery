@@ -39,7 +39,7 @@ namespace Battleship_Mystery.GUI.Pages
                 gridRow.Height = new GridLength(50);
             }
 
-            for (int y = 1; y <= viewModel.Mystery.MysteryCreator.NumberOfCollumns; y++)
+            for (int y = 1; y <= viewModel.Mystery.MysteryCreator.NumberOfColumns; y++)
             {
                 for (int x = 1; x <= viewModel.Mystery.MysteryCreator.NumberOfRows; x++)
                 {
