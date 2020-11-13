@@ -7,9 +7,9 @@ namespace Battleship_Mystery.Business
 {
     public class MysteryCreator : PropertyChangedClass
     {
-        private int numberOfColumns;
-        private int numberOfRows;
-        private int numberOfShips;
+        private int numberOfColumns = 2;
+        private int numberOfRows = 2;
+        private int numberOfShips = 1;
 
         public int NumberOfColumns
         {
