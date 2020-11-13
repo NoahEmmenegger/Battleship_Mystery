@@ -25,18 +25,18 @@ namespace Battleship_Mystery.GUI.Pages
         {
             InitializeComponent();
 
-            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfRows; j++)
+            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfColumns; j++)
             {
                 ColumnDefinition gridCol = new ColumnDefinition();
-                DynamicGrid.ColumnDefinitions.Add(gridCol);
                 gridCol.Width = new GridLength(50);
+                DynamicGrid.ColumnDefinitions.Add(gridCol);
             }
 
-            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfShips; i++)
+            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfRows; i++)
             {
                 RowDefinition gridRow = new RowDefinition();
-                DynamicGrid.RowDefinitions.Add(gridRow);
                 gridRow.Height = new GridLength(50);
+                DynamicGrid.RowDefinitions.Add(gridRow);
             }
 
             for (int y = 1; y <= viewModel.Mystery.MysteryCreator.NumberOfColumns; y++)

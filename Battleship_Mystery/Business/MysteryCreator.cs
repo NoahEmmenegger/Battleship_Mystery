@@ -101,7 +101,7 @@ namespace Battleship_Mystery.Business
 
             while (randomField == null || !HasFreeFieldsArround(randomField, fields))
             {
-                int randomItem = random.Next(1, fields.Count + 1);
+                int randomItem = random.Next(0, fields.Count);
                 if(!fields[randomItem].IsShipField)
                 {
                     randomField = fields[randomItem];
@@ -134,7 +134,7 @@ namespace Battleship_Mystery.Business
 
 
             Random random = new Random();
-            int index = random.Next(validFields.Count);
+            int index = random.Next(0, validFields.Count);
             return validFields[index];
         }
 
