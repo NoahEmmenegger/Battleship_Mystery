@@ -24,6 +24,7 @@ namespace Battleship_Mystery.GUI
         {
             InitializeComponent();
             Main.Content = new MysteryConfiguration();
+            Header.Content = new ToolMenu();
         }
 
         public void ShowPlayingField(PlayingFieldViewModel viewModel)

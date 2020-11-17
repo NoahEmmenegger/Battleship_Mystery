@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="Main"></Frame>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        
+        <Frame x:Name="Header"></Frame>
+        <Frame Grid.Row="1" x:Name="Main"></Frame>
+
     </Grid>
 </Window>

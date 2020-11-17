@@ -52,5 +52,13 @@ namespace Battleship_Mystery.ViewModels.Commands
         }
     }
 
+    public class ClickFieldCommand : BaseCommand
+    {
+        public ClickFieldCommand(Action<object> execute) : base(execute)
+        {
+
+        }
+    }
+
 
 }
