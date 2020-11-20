@@ -121,8 +121,8 @@ namespace Battleship_Mystery.Business
 
             var isUpAvailable = AreFieldsAvailable(upperFields, fields);
             var isLeftAvailable = AreFieldsAvailable(leftFields, fields);
-            var isDownAvailable = AreFieldsAvailable(leftFields, fields);
-            var isRightAvailable = AreFieldsAvailable(leftFields, fields);
+            var isDownAvailable = AreFieldsAvailable(downFields, fields);
+            var isRightAvailable = AreFieldsAvailable(rightFields, fields);
 
             List<List<Field>> validFields = new List<List<Field>>();
             if (isUpAvailable) validFields.Add(upperFields);
@@ -135,6 +135,7 @@ namespace Battleship_Mystery.Business
 
             Random random = new Random();
             int index = random.Next(0, validFields.Count);
+            //TODO: validFields haben noch 0 drin
             return validFields[index];
         }
 
