@@ -119,23 +119,17 @@ namespace Battleship_Mystery.Business
             List<Field> downFields = GetFieldsByDirection(field, size, fields, "down");
             List<Field> rightFields = GetFieldsByDirection(field, size, fields, "right");
 
-            var isUpAvailable = AreFieldsAvailable(upperFields, fields);
-            var isLeftAvailable = AreFieldsAvailable(leftFields, fields);
-            var isDownAvailable = AreFieldsAvailable(downFields, fields);
-            var isRightAvailable = AreFieldsAvailable(rightFields, fields);
-
             List<List<Field>> validFields = new List<List<Field>>();
-            if (isUpAvailable) validFields.Add(upperFields);
-            if (isLeftAvailable) validFields.Add(leftFields);
-            if (isDownAvailable) validFields.Add(downFields);
-            if (isRightAvailable) validFields.Add(rightFields);
+            if (AreFieldsAvailable(upperFields, fields)) validFields.Add(upperFields);
+            if (AreFieldsAvailable(leftFields, fields)) validFields.Add(leftFields);
+            if (AreFieldsAvailable(downFields, fields)) validFields.Add(downFields);
+            if (AreFieldsAvailable(rightFields, fields)) validFields.Add(rightFields);
 
             if (validFields.Count <= 0) return new List<Field>();
 
 
             Random random = new Random();
             int index = random.Next(0, validFields.Count);
-            //TODO: validFields haben noch 0 drin
             return validFields[index];
         }
 
@@ -146,7 +140,6 @@ namespace Battleship_Mystery.Business
                 if (field == null) return false;
                 if (field.IsShipField) return false;
 
-                var test = HasFreeFieldsArround(field, allFields);
                 if (!HasFreeFieldsArround(field, allFields)) return false;
             }
             return true;
@@ -193,8 +186,7 @@ namespace Battleship_Mystery.Business
         protected bool HasFreeFieldsArround(Field field, List<Field> fields)
         {
             if (field == null) return true;
-            var fieldsArround = GetFieldsArround(field, fields);
-            foreach (Field fieldItem in fieldsArround)
+            foreach (Field fieldItem in GetFieldsArround(field, fields))
             {
                 // Wenn field rand oder wasser ist, soll nichts passieren. Wenn es ein Shipfield ist dann soll er false returnen.
                 if (fieldItem != null)
