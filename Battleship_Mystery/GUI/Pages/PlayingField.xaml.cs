@@ -25,19 +25,22 @@ namespace Battleship_Mystery.GUI.Pages
         {
             InitializeComponent();
 
-            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfColumns; j++)
+            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfColumns + 1; j++)
             {
                 ColumnDefinition gridCol = new ColumnDefinition();
                 gridCol.Width = new GridLength(50);
                 DynamicGrid.ColumnDefinitions.Add(gridCol);
             }
 
-            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfRows; i++)
+            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfRows + 1; i++)
             {
                 RowDefinition gridRow = new RowDefinition();
                 gridRow.Height = new GridLength(50);
                 DynamicGrid.RowDefinitions.Add(gridRow);
             }
+
+            int[] shipColumnCounter = new int[viewModel.Mystery.MysteryCreator.NumberOfColumns];
+            int[] shipRowCounter = new int[viewModel.Mystery.MysteryCreator.NumberOfRows];
 
             for (int y = 1; y <= viewModel.Mystery.MysteryCreator.NumberOfColumns; y++)
             {
@@ -49,6 +52,8 @@ namespace Battleship_Mystery.GUI.Pages
 
                     if(field.IsShipField)
                     {
+                        shipColumnCounter[y -1]++;
+                        shipRowCounter[x -1]++;
                         var no = field.IsShipField;
                     }
 
@@ -73,9 +78,30 @@ namespace Battleship_Mystery.GUI.Pages
                 }
             }
 
+            for (int y = 0; y < shipColumnCounter.Length; y++)
+            {
+                Label newLabel = new Label();
+                newLabel.Content = shipColumnCounter[y];
 
+                Grid.SetRow(newLabel, y+1);
+                Grid.SetColumn(newLabel, 0);
+                DynamicGrid.SetValue(Grid.ColumnProperty, y);
+                DynamicGrid.SetValue(Grid.RowProperty, 0);
+                DynamicGrid.Children.Add(newLabel);
+            }
 
-            
+            for (int x = 0; x < shipRowCounter.Length; x++)
+            {
+                Label newLabel = new Label();
+                newLabel.Content = shipRowCounter[x];
+
+                Grid.SetRow(newLabel, 0);
+                Grid.SetColumn(newLabel, x + 1);
+                DynamicGrid.SetValue(Grid.ColumnProperty, 0);
+                DynamicGrid.SetValue(Grid.RowProperty, x + 1);
+                DynamicGrid.Children.Add(newLabel);
+            }
+
             DataContext = viewModel;
         }
     }
