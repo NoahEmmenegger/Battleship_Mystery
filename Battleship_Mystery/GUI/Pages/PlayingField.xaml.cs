@@ -45,14 +45,23 @@ namespace Battleship_Mystery.GUI.Pages
                 {
                     Button newButton = new Button();
 
-                    var test = viewModel.Mystery.FieldList.Where(field => field.XCoordinate == x && field.YCoordinate == y).First();
+                    var field = viewModel.Mystery.FieldList.Where(field => field.XCoordinate == x && field.YCoordinate == y).First();
 
-                    if(test.IsShipField)
+                    if(field.IsShipField)
                     {
-                        var no = test.IsShipField;
+                        var no = field.IsShipField;
                     }
 
-                    newButton.Content = test.IsShipField?"test":null;
+                    //newButton.Content = field.IsShipField ? "test" : null;
+                    Binding bindingContent = new Binding("StatusColor");
+                    bindingContent.Source = field;
+                    newButton.SetBinding(Button.BackgroundProperty, bindingContent);
+
+                    Binding bindingCommand = new Binding("ClickFieldCommand");
+                    bindingCommand.Source = field;
+                    newButton.SetBinding(Button.CommandProperty, bindingCommand);
+
+
                     Grid.SetRow(newButton, y);
                     Grid.SetColumn(newButton, x);
                     DynamicGrid.SetValue(Grid.ColumnProperty, y);
