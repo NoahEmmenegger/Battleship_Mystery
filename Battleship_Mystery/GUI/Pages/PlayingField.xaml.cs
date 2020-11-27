@@ -58,7 +58,7 @@ namespace Battleship_Mystery.GUI.Pages
                     }
 
                     // Todo: Remove
-                    newButton.Content = field.IsShipField ? "x" : null;
+                    //newButton.Content = field.IsShipField ? "x" : null;
 
                     //newButton.Content = field.IsShipField ? "test" : null;
                     Binding bindingContent = new Binding("StatusColor");

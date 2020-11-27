@@ -19,7 +19,10 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Command="{Binding HelpCommand}" Grid.Column="2" HorizontalAlignment="Right" Margin="3" Height="30" Width="100">Hilfe</Button>
+        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+            <Button Command="{Binding CorrectCommand}" Margin="3" Height="30" Width="100">Korrigieren</Button>
+            <Button Command="{Binding HelpCommand}" Margin="3" Height="30" Width="100">Hilfe</Button>
+        </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding SaveVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="100">Speichern</Button>
