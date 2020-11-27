@@ -20,7 +20,7 @@ namespace Battleship_Mystery.Business
             set
             {
                 numberOfColumns = value;
-                while ((numberOfColumns + 1) * (NumberOfRows + 1) < NumberOfShips * 9)
+                while ((numberOfColumns + 1) * (NumberOfRows + 1) < NumberOfShips * 5)
                 {
                     numberOfShips--; 
                     OnPropertyChanged(nameof(NumberOfShips));
@@ -38,7 +38,7 @@ namespace Battleship_Mystery.Business
             set
             {
                 numberOfRows = value;
-                while ((NumberOfColumns + 1) * (numberOfRows + 1) < NumberOfShips * 9)
+                while ((NumberOfColumns + 1) * (numberOfRows + 1) < NumberOfShips * 5)
                 {
                     numberOfShips--;
                     OnPropertyChanged(nameof(NumberOfShips));
@@ -54,7 +54,7 @@ namespace Battleship_Mystery.Business
             }
             set
             {
-                if((NumberOfColumns + 1) * (NumberOfRows + 1) >= value * 9)
+                if((NumberOfColumns + 1) * (NumberOfRows + 1) >= value * 5)
                 {
                     numberOfShips = value;
                     OnPropertyChanged();

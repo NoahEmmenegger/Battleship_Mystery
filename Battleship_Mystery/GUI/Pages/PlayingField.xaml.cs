@@ -103,6 +103,26 @@ namespace Battleship_Mystery.GUI.Pages
             }
 
             DataContext = viewModel;
+
+            int counter = 0;
+            foreach (Ship ship in viewModel.Mystery.ShipList)
+            {
+                RowDefinition gridCol = new RowDefinition();
+                ShipsGrid.RowDefinitions.Add(gridCol);
+
+                DockPanel stackPanel = new DockPanel();
+
+                for (int i = 0; i < ship.Size; i++)
+                {
+                    Label label = new Label();
+                    label.Content = "x";
+                    Grid.SetRow(stackPanel, counter);
+                    Grid.SetColumn(stackPanel, 1);
+                    stackPanel.Children.Add(label);
+                }
+                ShipsGrid.Children.Add(stackPanel);
+                counter++;
+            }
         }
     }
 }

@@ -8,7 +8,18 @@
       d:DesignHeight="800" d:DesignWidth="800"
       Title="PlayingField">
 
-    <Grid x:Name="DynamicGrid">
-        
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="root">
+            <Grid x:Name="DynamicGrid">
+
+            </Grid>
+            <Grid x:Name="ShipsGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Ships:"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

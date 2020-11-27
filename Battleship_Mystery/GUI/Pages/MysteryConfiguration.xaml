@@ -35,7 +35,7 @@
         <Label Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfRows}"></Label>
         
         <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Schiffe:</Label>
-        <Slider Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Minimum="1" Maximum="13" Width="200" Value="{Binding Path=MysteryCreator.NumberOfShips}"></Slider>
+        <Slider Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Minimum="1" Maximum="20" Width="200" Value="{Binding Path=MysteryCreator.NumberOfShips}"></Slider>
         <Label Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfShips}"></Label>
 
         <Button Command="{Binding GenerateMysteryCommand}" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Center" Width="90" Height="40"  Margin="5">Erstellen</Button>
