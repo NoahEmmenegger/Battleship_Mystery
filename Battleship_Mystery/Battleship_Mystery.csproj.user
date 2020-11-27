@@ -16,9 +16,6 @@
     <Compile Update="GUI\Pages\PlayingField.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="GUI\Pages\ToolMenu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="GUI\MainWindow.xaml">
@@ -28,9 +25,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Pages\PlayingField.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="GUI\Pages\ToolMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

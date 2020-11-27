@@ -10,6 +10,28 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="root">
+            <Grid x:Name="ToolMenu">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                    <Button Command="{Binding CorrectCommand}" Margin="3" Height="30" Width="100">Korrigieren</Button>
+                    <Button Command="{Binding HelpCommand}" Margin="3" Height="30" Width="100">Hilfe</Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding SaveVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="100">Speichern</Button>
+                    <Button Command="{Binding LoadVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="100">Laden</Button>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"  Orientation="Horizontal">
+                    <Button Command="{Binding SafePDFCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="100">PDF Speichern</Button>
+                    <Button Command="{Binding SafePDFSolutionCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="130">PDF Lösung Speichern</Button>
+                </StackPanel>
+            </Grid>
             <Grid x:Name="DynamicGrid">
 
             </Grid>

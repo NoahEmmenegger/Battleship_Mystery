@@ -67,6 +67,4 @@ namespace Battleship_Mystery.ViewModels.Commands
 
         }
     }
-
-
 }

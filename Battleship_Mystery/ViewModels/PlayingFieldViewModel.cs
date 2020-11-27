@@ -8,17 +8,59 @@ namespace Battleship_Mystery.ViewModels
 {
     public class PlayingFieldViewModel
     {
-        public ClickFieldCommand ClickFieldCommand { get; set; }
 
         public Mystery Mystery { get; set; }
+
+        public HelpCommand HelpCommand { get; set; }
+        public CorrectCommand CorrectCommand { get; set; }
+        public SaveVirtualMysteryCommand SaveVirtualMysteryCommand { get; set; }
+        public LoadVirtualMysteryCommand LoadVirtualMysteryCommand { get; set; }
+        public SafePDFCommand SafePDFCommand { get; set; }
+        public SafePDFSolutionCommand SafePDFSolutionCommand { get; set; }
 
         public PlayingFieldViewModel(Mystery mystery)
         {
             Mystery = mystery;
-            ClickFieldCommand = new ClickFieldCommand(ClickField);
+
+            HelpCommand = new HelpCommand(GetHelp);
+            CorrectCommand = new CorrectCommand(CorrectMystery);
+            SaveVirtualMysteryCommand = new SaveVirtualMysteryCommand(SaveVirtualMystery);
+            LoadVirtualMysteryCommand = new LoadVirtualMysteryCommand(LoadVirtualMystery);
+            SafePDFCommand = new SafePDFCommand(SavePDF);
+            SafePDFSolutionCommand = new SafePDFSolutionCommand(SavePDFSolution);
         }
 
-        public void ClickField(object parameter)
+        public void DiscoverField()
+        {
+           
+        }
+
+        private void GetHelp(object parameter)
+        {
+
+        }
+
+        public void CorrectMystery(object parameter)
+        {
+
+        }
+
+        private void SaveVirtualMystery(object parameter)
+        {
+
+        }
+
+        private void LoadVirtualMystery(object parameter)
+        {
+
+        }
+
+        private void SavePDF(object parameter)
+        {
+
+        }
+
+        private void SavePDFSolution(object parameter)
         {
 
         }

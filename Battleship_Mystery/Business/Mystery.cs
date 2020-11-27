@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Battleship_Mystery.Enum;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Battleship_Mystery.Business
@@ -21,10 +23,12 @@ namespace Battleship_Mystery.Business
             MysteryCreator = mysteryCreator;
         }
 
-        public void ChangeFieldStatus(Field field)
+        public void DiscoverShipField()
         {
-
+            Field field = FieldList.Where(f => f.IsShipField && f.Status != FieldStatus.Ship).First();
+            field.Status = FieldStatus.Ship;
         }
+        
 
         public bool CeckCorrectness()
         {
