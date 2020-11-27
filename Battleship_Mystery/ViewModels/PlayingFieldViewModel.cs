@@ -3,6 +3,7 @@ using Battleship_Mystery.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Battleship_Mystery.ViewModels
 {
@@ -42,7 +43,26 @@ namespace Battleship_Mystery.ViewModels
 
         public void CorrectMystery(object parameter)
         {
-
+            foreach (Field field in Mystery.FieldList)
+            {
+                if(field.Status == Enum.FieldStatus.Unexplored)
+                {
+                    MessageBox.Show("Es gibt noch Fehler", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if(field.Status == Enum.FieldStatus.Ship && !field.IsShipField)
+                {
+                    MessageBox.Show("Es gibt noch Fehler", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if(field.Status == Enum.FieldStatus.Water && field.IsShipField)
+                {
+                    MessageBox.Show("Es gibt noch Fehler", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            MessageBox.Show("Das Mystery wurde korrekt gelöst!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
         }
 
         private void SaveVirtualMystery(object parameter)
