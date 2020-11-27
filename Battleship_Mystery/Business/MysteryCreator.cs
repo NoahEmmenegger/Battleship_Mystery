@@ -88,7 +88,7 @@ namespace Battleship_Mystery.Business
 
             mystery.FieldList = fieldList;
             mystery.ShipList = shipList;
-
+            mystery.DiscoverStartFields();
 
             return mystery;
         }

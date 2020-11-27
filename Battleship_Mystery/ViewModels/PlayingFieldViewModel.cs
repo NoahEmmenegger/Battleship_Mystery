@@ -38,7 +38,7 @@ namespace Battleship_Mystery.ViewModels
 
         private void GetHelp(object parameter)
         {
-
+            Mystery.DiscoverShipField();
         }
 
         public void CorrectMystery(object parameter)
