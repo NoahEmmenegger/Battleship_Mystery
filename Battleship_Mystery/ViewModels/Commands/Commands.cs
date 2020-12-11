@@ -28,6 +28,14 @@ namespace Battleship_Mystery.ViewModels.Commands
         }
     }
 
+    public class BackCommand : BaseCommand
+    {
+        public BackCommand(Action<object> execute) : base(execute)
+        {
+
+        }
+    }
+
     public class SaveVirtualMysteryCommand : BaseCommand
     {
         public SaveVirtualMysteryCommand(Action<object> execute) : base(execute)

@@ -23,8 +23,9 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Button Command="{Binding SaveVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="100">Speichern</Button>
-                    <Button Command="{Binding LoadVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="100">Laden</Button>
+                    <Button Command="{Binding BackCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="75">Zurück</Button>
+                    <Button Command="{Binding SaveVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="75">Speichern</Button>
+                    <Button Command="{Binding LoadVirtualMysteryCommand}" HorizontalAlignment="Left" Margin="3" Height="30" Width="75">Laden</Button>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1"  Orientation="Horizontal">

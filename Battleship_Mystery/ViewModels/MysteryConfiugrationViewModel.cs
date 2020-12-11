@@ -34,7 +34,7 @@ namespace Battleship_Mystery.ViewModels
         public void GenerateMystery(object parameter)
         {
             PlayingFieldViewModel playingFieldViewModel = new PlayingFieldViewModel(_mysteryCreator.Create());
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = MainWindow.GetSingelton();
             mainWindow.Show();
             mainWindow.ShowPlayingField(playingFieldViewModel);
         }

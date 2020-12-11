@@ -1,8 +1,7 @@
 ﻿<Application x:Class="Battleship_Mystery.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Battleship_Mystery"
-             StartupUri="GUI/MainWindow.xaml">
+             xmlns:local="clr-namespace:Battleship_Mystery">
     <Application.Resources>
          
     </Application.Resources>

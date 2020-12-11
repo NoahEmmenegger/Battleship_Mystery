@@ -19,16 +19,37 @@ namespace Battleship_Mystery.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainWindow singelton;
-        public MainWindow()
+        private static MainWindow singelton;
+        private MainWindow()
         {
             InitializeComponent();
             Main.Content = new MysteryConfiguration();
         }
 
+        public static MainWindow GetSingelton()
+        {
+            if (singelton != null)
+                return singelton;
+            else
+            {
+                MainWindow mainWindow = new MainWindow();
+                return singelton = mainWindow;
+            }
+        }
+
         public void ShowPlayingField(PlayingFieldViewModel viewModel)
         {
             Main.Content = new PlayingField(viewModel);
+        }
+
+        public void UpdatePlayingField(PlayingFieldViewModel viewModel)
+        {
+            Main.Content = new PlayingField(viewModel);
+        }
+
+        public void ShowMysteryConfiguration()
+        {
+            Main.Content = new MysteryConfiguration();
         }
     }
 }

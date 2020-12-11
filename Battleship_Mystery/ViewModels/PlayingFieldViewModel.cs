@@ -1,7 +1,12 @@
 ﻿using Battleship_Mystery.Business;
+using Battleship_Mystery.Business.Service;
+using Battleship_Mystery.GUI;
+using Battleship_Mystery.GUI.Pages;
 using Battleship_Mystery.ViewModels.Commands;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 
@@ -15,6 +20,7 @@ namespace Battleship_Mystery.ViewModels
         public HelpCommand HelpCommand { get; set; }
         public CorrectCommand CorrectCommand { get; set; }
         public SaveVirtualMysteryCommand SaveVirtualMysteryCommand { get; set; }
+        public BackCommand BackCommand { get; set; }
         public LoadVirtualMysteryCommand LoadVirtualMysteryCommand { get; set; }
         public SafePDFCommand SafePDFCommand { get; set; }
         public SafePDFSolutionCommand SafePDFSolutionCommand { get; set; }
@@ -25,6 +31,7 @@ namespace Battleship_Mystery.ViewModels
 
             HelpCommand = new HelpCommand(GetHelp);
             CorrectCommand = new CorrectCommand(CorrectMystery);
+            BackCommand = new BackCommand(Back);
             SaveVirtualMysteryCommand = new SaveVirtualMysteryCommand(SaveVirtualMystery);
             LoadVirtualMysteryCommand = new LoadVirtualMysteryCommand(LoadVirtualMystery);
             SafePDFCommand = new SafePDFCommand(SavePDF);
@@ -67,11 +74,23 @@ namespace Battleship_Mystery.ViewModels
 
         private void SaveVirtualMystery(object parameter)
         {
+            SaveLoadService.Save(Mystery);
+        }
 
+        private void Back(object parameter)
+        {
+            MainWindow main = MainWindow.GetSingelton();
+            main.Show();
+            main.ShowMysteryConfiguration();
         }
 
         private void LoadVirtualMystery(object parameter)
         {
+            Mystery = SaveLoadService.Load(Mystery);
+
+            MainWindow mainWindow = MainWindow.GetSingelton();
+            mainWindow.Show();
+            mainWindow.UpdatePlayingField(this);
 
         }
 

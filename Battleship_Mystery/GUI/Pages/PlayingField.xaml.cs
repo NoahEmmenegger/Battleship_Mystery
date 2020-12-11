@@ -25,6 +25,8 @@ namespace Battleship_Mystery.GUI.Pages
         {
             InitializeComponent();
 
+            this.ShowsNavigationUI = false;
+
             for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfColumns + 1; j++)
             {
                 ColumnDefinition gridCol = new ColumnDefinition();
