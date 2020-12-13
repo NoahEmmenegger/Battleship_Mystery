@@ -27,11 +27,11 @@ namespace Battleship_Mystery.Business.Service
                             mystery.ShipList.Add(ship);
 
                         } else if (arguments[0] == "c") { 
-                            if(arguments[1] == "x")
+                            if(arguments[1] == "y")
                             {
                                 mystery.MysteryCreator.NumberOfRows = Convert.ToInt32(arguments[2]);
                             }
-                            if (arguments[1] == "y")
+                            if (arguments[1] == "x")
                             {
                                 mystery.MysteryCreator.NumberOfColumns = Convert.ToInt32(arguments[2]);
                             }
