@@ -33,8 +33,8 @@
         <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Zeilen:</Label>
         <Slider Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Minimum="2" Maximum="10" Value="{Binding Path=MysteryCreator.NumberOfRows}"></Slider>
         <Label Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfRows}"></Label>
-        
-        <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Schiffe:</Label>
+
+        <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Anzahl Schiffsteile:</Label>
         <Slider Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Minimum="1" Maximum="20" Width="200" Value="{Binding Path=MysteryCreator.NumberOfShips}"></Slider>
         <Label Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=MysteryCreator.NumberOfShips}"></Label>
 
