@@ -26,7 +26,16 @@ namespace Battleship_Mystery.Business.Service
                             Ship ship = new Ship(Convert.ToInt32(arguments[1]));
                             mystery.ShipList.Add(ship);
 
-                        }else
+                        } else if (arguments[0] == "c") { 
+                            if(arguments[1] == "x")
+                            {
+                                mystery.MysteryCreator.NumberOfRows = Convert.ToInt32(arguments[2]);
+                            }
+                            if (arguments[1] == "y")
+                            {
+                                mystery.MysteryCreator.NumberOfColumns = Convert.ToInt32(arguments[2]);
+                            }
+                        } else
                         {
                             Field field = new Field(Convert.ToInt32(arguments[0]), Convert.ToInt32(arguments[1]));
                             field.Status = (Enum.FieldStatus)Convert.ToInt32(arguments[2]);
@@ -55,8 +64,8 @@ namespace Battleship_Mystery.Business.Service
             {
                 text += "s:" + ship.Size + "\r";
             }
-            text += "xconf:" + mystery.MysteryCreator.NumberOfColumns + "\r";
-            text += "yconf:" + mystery.MysteryCreator.NumberOfRows + "\r";
+            text += "c:x:" + mystery.MysteryCreator.NumberOfColumns + "\r";
+            text += "c:y:" + mystery.MysteryCreator.NumberOfRows + "\r";
             if (saveFileDialog.ShowDialog() == true)
             {
                 using (StreamWriter sw = new StreamWriter(saveFileDialog.OpenFile()))
