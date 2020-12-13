@@ -38,11 +38,6 @@ namespace Battleship_Mystery.ViewModels
             SafePDFSolutionCommand = new SafePDFSolutionCommand(SavePDFSolution);
         }
 
-        public void DiscoverField()
-        {
-           
-        }
-
         private void GetHelp(object parameter)
         {
             Mystery.DiscoverShipField();
@@ -96,12 +91,24 @@ namespace Battleship_Mystery.ViewModels
 
         private void SavePDF(object parameter)
         {
-
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.FileName = "Mystery";
+            openFileDialog.Filter = "Pdf Files|*.pdf";
+            if(openFileDialog.ShowDialog() == true)
+            {
+                ExportService.Export(Mystery, openFileDialog.FileName);
+            }           
         }
 
         private void SavePDFSolution(object parameter)
         {
-
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.FileName = "Mystery Solution";
+            openFileDialog.Filter = "Pdf Files|*.pdf";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ExportService.ExportSolution(Mystery, openFileDialog.FileName);
+            }
         }
     }
 }
