@@ -27,14 +27,14 @@ namespace Battleship_Mystery.GUI.Pages
 
             this.ShowsNavigationUI = false;
 
-            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfColumns + 1; j++)
+            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfRows + 1; j++)
             {
                 ColumnDefinition gridCol = new ColumnDefinition();
                 gridCol.Width = new GridLength(50);
                 DynamicGrid.ColumnDefinitions.Add(gridCol);
             }
 
-            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfRows + 1; i++)
+            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfColumns + 1; i++)
             {
                 RowDefinition gridRow = new RowDefinition();
                 gridRow.Height = new GridLength(50);
@@ -59,10 +59,6 @@ namespace Battleship_Mystery.GUI.Pages
                         var no = field.IsShipField;
                     }
 
-                    // Todo: Remove
-                    //newButton.Content = field.IsShipField ? "x" : null;
-
-                    //newButton.Content = field.IsShipField ? "test" : null;
                     Binding bindingContent = new Binding("StatusColor");
                     bindingContent.Source = field;
                     newButton.SetBinding(Button.BackgroundProperty, bindingContent);
