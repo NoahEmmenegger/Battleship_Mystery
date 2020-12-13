@@ -6,16 +6,14 @@ using System.Text;
 
 namespace Battleship_Mystery.Business.Service
 {
-    static class SaveLoadService
+    public static class SaveLoadService
     {
-        public static Mystery Load(Mystery mystery)
+        public static Mystery Load(Mystery mystery, string fileName)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
+
                 mystery.FieldList.Clear();
                 mystery.ShipList.Clear();
-                using (var streamReader = File.OpenText(openFileDialog.FileName))
+                using (var streamReader = File.OpenText(fileName))
                 {
                     var lines = streamReader.ReadToEnd().Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     foreach (var line in lines)
@@ -26,8 +24,10 @@ namespace Battleship_Mystery.Business.Service
                             Ship ship = new Ship(Convert.ToInt32(arguments[1]));
                             mystery.ShipList.Add(ship);
 
-                        } else if (arguments[0] == "c") { 
-                            if(arguments[1] == "y")
+                        }
+                        else if (arguments[0] == "c")
+                        {
+                            if (arguments[1] == "x")
                             {
                                 mystery.MysteryCreator.NumberOfRows = Convert.ToInt32(arguments[2]);
                             }
@@ -35,7 +35,8 @@ namespace Battleship_Mystery.Business.Service
                             {
                                 mystery.MysteryCreator.NumberOfColumns = Convert.ToInt32(arguments[2]);
                             }
-                        } else
+                        }
+                        else
                         {
                             Field field = new Field(Convert.ToInt32(arguments[0]), Convert.ToInt32(arguments[1]));
                             field.Status = (Enum.FieldStatus)Convert.ToInt32(arguments[2]);
@@ -45,16 +46,11 @@ namespace Battleship_Mystery.Business.Service
 
                     }
                 }
-            }
             return mystery;
         }
 
-        public static void Save(Mystery mystery)
+        public static void Save(Mystery mystery, string Filename)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "export.txt";
-            saveFileDialog.DefaultExt = "txt";
-            saveFileDialog.Filter = "txt files (*.txt) | *.txt";
             string text = "";
             foreach (Field field in mystery.FieldList)
             {
@@ -66,12 +62,9 @@ namespace Battleship_Mystery.Business.Service
             }
             text += "c:x:" + mystery.MysteryCreator.NumberOfColumns + "\r";
             text += "c:y:" + mystery.MysteryCreator.NumberOfRows + "\r";
-            if (saveFileDialog.ShowDialog() == true)
+            using (StreamWriter sw = new StreamWriter(Filename))
             {
-                using (StreamWriter sw = new StreamWriter(saveFileDialog.OpenFile()))
-                {
-                    sw.Write(text);
-                }
+                sw.Write(text);
             }
         }
     }

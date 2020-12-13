@@ -69,7 +69,15 @@ namespace Battleship_Mystery.ViewModels
 
         private void SaveVirtualMystery(object parameter)
         {
-            SaveLoadService.Save(Mystery);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "export.txt";
+            saveFileDialog.DefaultExt = "txt";
+            saveFileDialog.Filter = "txt files (*.txt) | *.txt";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                SaveLoadService.Save(Mystery, saveFileDialog.FileName);
+            }
         }
 
         private void Back(object parameter)
@@ -81,7 +89,11 @@ namespace Battleship_Mystery.ViewModels
 
         private void LoadVirtualMystery(object parameter)
         {
-            Mystery = SaveLoadService.Load(Mystery);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Mystery = SaveLoadService.Load(Mystery, openFileDialog.FileName);
+            }
 
             MainWindow mainWindow = MainWindow.GetSingelton();
             mainWindow.Show();

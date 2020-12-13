@@ -13,7 +13,7 @@ using Microsoft.Win32;
 
 namespace Battleship_Mystery.Business.Service
 {
-    static class ExportService
+    public static class ExportService
     {
         public static void Export(Mystery mystery, string filePath)
         {

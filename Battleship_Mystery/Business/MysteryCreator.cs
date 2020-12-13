@@ -59,6 +59,13 @@ namespace Battleship_Mystery.Business
                     numberOfShips = value;
                     OnPropertyChanged();
                 }
+                else
+                {
+                    if(value > 1)
+                    {
+                        NumberOfShips = value - 1;
+                    }
+                }
             }
         }
 
