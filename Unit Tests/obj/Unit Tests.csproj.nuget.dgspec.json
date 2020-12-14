@@ -1,0 +1,160 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Unit Tests\\Unit Tests.csproj": {}
+  },
+  "projects": {
+    "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Battleship_Mystery\\Battleship_Mystery.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Battleship_Mystery\\Battleship_Mystery.csproj",
+        "projectName": "Battleship_Mystery",
+        "projectPath": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Battleship_Mystery\\Battleship_Mystery.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Battleship_Mystery\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "PdfFileWriter": {
+              "target": "Package",
+              "version": "[1.25.0, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Unit Tests\\Unit Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Unit Tests\\Unit Tests.csproj",
+        "projectName": "Unit Tests",
+        "projectPath": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Unit Tests\\Unit Tests.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Unit Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Battleship_Mystery\\Battleship_Mystery.csproj": {
+                "projectPath": "E:\\OneDrive\\GIBZ\\Semester_3.1\\M326\\Projekt\\Battleship_Mystery\\Battleship_Mystery\\Battleship_Mystery.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
