@@ -14,11 +14,6 @@ namespace Battleship_Mystery.Business
 
         public MysteryCreator MysteryCreator { get; set; }
 
-        public Field GetTip()
-        {
-            return null;
-        }
-
         public Mystery(MysteryCreator mysteryCreator)
         {
             MysteryCreator = mysteryCreator;

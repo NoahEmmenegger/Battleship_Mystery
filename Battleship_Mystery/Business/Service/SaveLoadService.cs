@@ -8,12 +8,12 @@ namespace Battleship_Mystery.Business.Service
 {
     public static class SaveLoadService
     {
-        public static Mystery Load(Mystery mystery, string fileName)
+        public static Mystery Load(Mystery mystery, string filename)
         {
 
                 mystery.FieldList.Clear();
                 mystery.ShipList.Clear();
-                using (var streamReader = File.OpenText(fileName))
+                using (var streamReader = File.OpenText(filename))
                 {
                     var lines = streamReader.ReadToEnd().Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     foreach (var line in lines)
@@ -49,7 +49,7 @@ namespace Battleship_Mystery.Business.Service
             return mystery;
         }
 
-        public static void Save(Mystery mystery, string Filename)
+        public static void Save(Mystery mystery, string filename)
         {
             string text = "";
             foreach (Field field in mystery.FieldList)
@@ -62,7 +62,7 @@ namespace Battleship_Mystery.Business.Service
             }
             text += "c:x:" + mystery.MysteryCreator.NumberOfColumns + "\r";
             text += "c:y:" + mystery.MysteryCreator.NumberOfRows + "\r";
-            using (StreamWriter sw = new StreamWriter(Filename))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 sw.Write(text);
             }
