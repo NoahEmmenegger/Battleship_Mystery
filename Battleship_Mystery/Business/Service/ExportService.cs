@@ -59,11 +59,11 @@ namespace Battleship_Mystery.Business.Service
             int[] shipRowCounter = new int[mystery.MysteryCreator.NumberOfRows];
             
 
-            PdfPTable table = new PdfPTable(mystery.MysteryCreator.NumberOfColumns + 1);
-                table.AddCell("X");
+            PdfPTable table = new PdfPTable(mystery.MysteryCreator.NumberOfRows + 1);
+                table.AddCell("");
 
 
-            for (int y = 1; y <= mystery.MysteryCreator.NumberOfColumns; y++)
+            for (int y = 1; y <= mystery.MysteryCreator.NumberOfRows; y++)
             {
                 int countedShips = mystery.FieldList.Where(f => f.IsShipField && f.XCoordinate == y).Count();
 
