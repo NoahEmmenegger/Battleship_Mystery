@@ -12,8 +12,17 @@ namespace Battleship_Mystery.Business
         private FieldStatus _status;
         public ClickFieldCommand ClickFieldCommand { get; set; }
 
+        /// <summary>
+        /// X Kordinate vom Feld
+        /// </summary>
         public int XCoordinate { get; set; }
+        /// <summary>
+        /// Y Kordinate vom Feld
+        /// </summary>
         public int YCoordinate { get; set; }
+        /// <summary>
+        /// Der Status vom Feld, ob es verdeckt, Wasser oder Schiff ist
+        /// </summary>
         public FieldStatus Status
         {
             get
@@ -27,6 +36,9 @@ namespace Battleship_Mystery.Business
                 OnPropertyChanged(nameof(StatusColor));
             }
         }
+        /// <summary>
+        /// Status Farbe vom Feld
+        /// </summary>
         public SolidColorBrush StatusColor
         {
             get
@@ -42,6 +54,9 @@ namespace Battleship_Mystery.Business
                 return new SolidColorBrush(Colors.Orange);
             }
         }
+        /// <summary>
+        /// Definiert ob das Feld ein Schiffsfeld ist oder nicht
+        /// </summary>
         public bool IsShipField { get; set; }
 
         public Field(int x, int y)
@@ -50,7 +65,10 @@ namespace Battleship_Mystery.Business
             YCoordinate = y;
             ClickFieldCommand = new ClickFieldCommand(ChangeStatus);
         }
-
+        /// <summary>
+        /// Ändert den Status vom Feld
+        /// </summary>
+        /// <param name="parameter"></param>
         public void ChangeStatus(object parameter)
         {
             if(Status == FieldStatus.Unexplored)

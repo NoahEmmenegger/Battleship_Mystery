@@ -15,6 +15,11 @@ namespace Battleship_Mystery.Business.Service
 {
     public static class ExportService
     {
+        /// <summary>
+        /// Erstellt ein PDF und schreibt das Rästel in das PDF
+        /// </summary>
+        /// <param name="mystery">Das Räsel, welches exportiert werden soll</param>
+        /// <param name="filePath">Der Pfad von der PDF Datei</param>
         public static void Export(Mystery mystery, string filePath)
         {
    
@@ -27,7 +32,11 @@ namespace Battleship_Mystery.Business.Service
             doc.Add(new Phrase(CreateShipInformations(mystery)));
             doc.Close();
         }
-
+        /// <summary>
+        /// Erstellt ein PDF mit der Lösung vom Rätsel
+        /// </summary>
+        /// <param name="mystery">Rätsel von welchem die Lösung exportiert werden soll</param>
+        /// <param name="filePath">Der Pfad von der PDF Datei</param>
         public static void ExportSolution(Mystery mystery, string filePath)
         {
             Document doc = new Document();
@@ -38,7 +47,11 @@ namespace Battleship_Mystery.Business.Service
             doc.Add(table);
             doc.Close();
         }
-
+        /// <summary>
+        /// Erstellt die Informationen, von welchem Schiffstyp, wieviele Schiffe existieren
+        /// </summary>
+        /// <param name="mystery">Das Mystery, welches für die Generation verwendet werden soll</param>
+        /// <returns></returns>
         private static string CreateShipInformations(Mystery mystery)
         {
             string shipInformations = "Schiffe: \r\n\r\n";
@@ -52,7 +65,12 @@ namespace Battleship_Mystery.Business.Service
             }
             return shipInformations;
         }
-
+        /// <summary>
+        /// Erstellt die Tabelle für den PDF Export
+        /// </summary>
+        /// <param name="mystery">Das Mystery welches für die Generation verwendet werden soll</param>
+        /// <param name="isForSolution">Definiert, ob die Tabelle für die Lösung oder für das Rätsel generiert werden soll.</param>
+        /// <returns></returns>
         private static PdfPTable CreateTable(Mystery mystery, bool isForSolution)
         {
             int[] shipColumnCounter = new int[mystery.MysteryCreator.NumberOfColumns];

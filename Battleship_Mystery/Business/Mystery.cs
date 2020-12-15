@@ -9,16 +9,26 @@ namespace Battleship_Mystery.Business
 {
     public class Mystery
     {
+        /// <summary>
+        /// Anzahl der Schiffe vom Rätsel
+        /// </summary>
         public List<Ship> ShipList { get; set; }
+        /// <summary>
+        /// Anzahl der Felder vom Rätsel
+        /// </summary>
         public List<Field> FieldList { get; set; }
-
+        /// <summary>
+        /// Der MysteryCreator, welcher dieses Rätsel erstellt hat
+        /// </summary>
         public MysteryCreator MysteryCreator { get; set; }
 
         public Mystery(MysteryCreator mysteryCreator)
         {
             MysteryCreator = mysteryCreator;
         }
-
+        /// <summary>
+        /// Leitet die aufdeckung von den Feldern, welche am Start aufgedeckt sind, in die Wege
+        /// </summary>
         public void DiscoverStartFields()
         {
 
@@ -33,7 +43,9 @@ namespace Battleship_Mystery.Business
                 DiscoverWaterField();
             }
         }
-
+        /// <summary>
+        /// Deckt ein Schiffsfeld auf
+        /// </summary>
         public void DiscoverShipField()
         {
             Random random = new Random();
@@ -47,7 +59,9 @@ namespace Battleship_Mystery.Business
                 field.Status = FieldStatus.Ship;
             }
         }
-
+        /// <summary>
+        /// Deckt ein Wasserfeld auf
+        /// </summary>
         public void DiscoverWaterField()
         {
             Random random = new Random();
@@ -61,8 +75,10 @@ namespace Battleship_Mystery.Business
                 field.Status = FieldStatus.Water;
             }
         }
-        
-
+        /// <summary>
+        /// Überprüft ob 
+        /// </summary>
+        /// <returns></returns>
         public bool CeckCorrectness()
         {
             return false;
