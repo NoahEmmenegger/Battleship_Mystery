@@ -27,14 +27,14 @@ namespace Battleship_Mystery.GUI.Pages
 
             this.ShowsNavigationUI = false;
 
-            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfRows + 1; j++)
+            for (int j = 0; j <= viewModel.Mystery.MysteryCreator.NumberOfColumns + 1; j++)
             {
                 ColumnDefinition gridCol = new ColumnDefinition();
                 gridCol.Width = new GridLength(50);
                 DynamicGrid.ColumnDefinitions.Add(gridCol);
             }
 
-            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfColumns + 1; i++)
+            for (int i = 0; i <= viewModel.Mystery.MysteryCreator.NumberOfRows + 1; i++)
             {
                 RowDefinition gridRow = new RowDefinition();
                 gridRow.Height = new GridLength(50);
@@ -44,9 +44,9 @@ namespace Battleship_Mystery.GUI.Pages
             int[] shipColumnCounter = new int[viewModel.Mystery.MysteryCreator.NumberOfColumns];
             int[] shipRowCounter = new int[viewModel.Mystery.MysteryCreator.NumberOfRows];
 
-            for (int y = 1; y <= viewModel.Mystery.MysteryCreator.NumberOfColumns; y++)
+            for (int y = 1; y <= viewModel.Mystery.MysteryCreator.NumberOfRows; y++)
             {
-                for (int x = 1; x <= viewModel.Mystery.MysteryCreator.NumberOfRows; x++)
+                for (int x = 1; x <= viewModel.Mystery.MysteryCreator.NumberOfColumns; x++)
                 {
                     Button newButton = new Button();
 
@@ -54,8 +54,8 @@ namespace Battleship_Mystery.GUI.Pages
 
                     if(field.IsShipField)
                     {
-                        shipColumnCounter[y -1]++;
-                        shipRowCounter[x -1]++;
+                        shipRowCounter[y -1]++;
+                        shipColumnCounter[x -1]++;
                         var no = field.IsShipField;
                     }
 
@@ -76,10 +76,10 @@ namespace Battleship_Mystery.GUI.Pages
                 }
             }
 
-            for (int y = 0; y < shipColumnCounter.Length; y++)
+            for (int y = 0; y < shipRowCounter.Length; y++)
             {
                 Label newLabel = new Label();
-                newLabel.Content = shipColumnCounter[y];
+                newLabel.Content = shipRowCounter[y];
 
                 Grid.SetRow(newLabel, y+1);
                 Grid.SetColumn(newLabel, 0);
@@ -88,10 +88,10 @@ namespace Battleship_Mystery.GUI.Pages
                 DynamicGrid.Children.Add(newLabel);
             }
 
-            for (int x = 0; x < shipRowCounter.Length; x++)
+            for (int x = 0; x < shipColumnCounter.Length; x++)
             {
                 Label newLabel = new Label();
-                newLabel.Content = shipRowCounter[x];
+                newLabel.Content = shipColumnCounter[x];
 
                 Grid.SetRow(newLabel, 0);
                 Grid.SetColumn(newLabel, x + 1);

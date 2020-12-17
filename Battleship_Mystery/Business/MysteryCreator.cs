@@ -241,9 +241,9 @@ namespace Battleship_Mystery.Business
         protected List<Field> GetFieldList()
         {
             List<Field> fields = new List<Field>();
-            for (int y =1;y <= NumberOfColumns; y++)
+            for (int y =1;y <= NumberOfRows; y++)
             {
-                for (int x = 1; x <= NumberOfRows; x++)
+                for (int x = 1; x <= NumberOfColumns; x++)
                 {
                     fields.Add(new Field(x, y));
                 }
