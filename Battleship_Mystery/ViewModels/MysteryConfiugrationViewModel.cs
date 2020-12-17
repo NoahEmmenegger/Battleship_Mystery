@@ -4,6 +4,7 @@ using Battleship_Mystery.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Battleship_Mystery.ViewModels
 {
@@ -33,10 +34,17 @@ namespace Battleship_Mystery.ViewModels
 
         public void GenerateMystery(object parameter)
         {
-            PlayingFieldViewModel playingFieldViewModel = new PlayingFieldViewModel(_mysteryCreator.Create());
-            MainWindow mainWindow = MainWindow.GetSingelton();
-            mainWindow.Show();
-            mainWindow.ShowPlayingField(playingFieldViewModel);
+            try
+            {
+                PlayingFieldViewModel playingFieldViewModel = new PlayingFieldViewModel(_mysteryCreator.Create());
+                MainWindow mainWindow = MainWindow.GetSingelton();
+                mainWindow.Show();
+                mainWindow.ShowPlayingField(playingFieldViewModel);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erstellung vom Rätsel Fehlgeschlagen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
