@@ -8,6 +8,12 @@ namespace Battleship_Mystery.Business.Service
 {
     public static class SaveLoadService
     {
+        /// <summary>
+        /// Lade ein mystery
+        /// </summary>
+        /// <param name="mystery"></param>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public static Mystery Load(Mystery mystery, string filename)
         {
 
@@ -49,6 +55,11 @@ namespace Battleship_Mystery.Business.Service
             return mystery;
         }
 
+        /// <summary>
+        /// Speichere ein Mystery
+        /// </summary>
+        /// <param name="mystery"></param>
+        /// <param name="filename"></param>
         public static void Save(Mystery mystery, string filename)
         {
             string text = "";

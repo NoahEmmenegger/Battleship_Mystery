@@ -69,6 +69,10 @@ namespace Battleship_Mystery.Business
             }
         }
 
+        /// <summary>
+        /// Generiert ein Mystery anhand NumberOfRows / NumberOfCollumns und NumberOfShips
+        /// </summary>
+        /// <returns></returns>
         public Mystery Create()
         {
             Mystery mystery = new Mystery(this);
@@ -100,6 +104,12 @@ namespace Battleship_Mystery.Business
             return mystery;
         }
 
+        /// <summary>
+        /// Erhalte eine Liste von Random Felds mit der grösse shipSize
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <param name="shipSize"></param>
+        /// <returns></returns>
         protected List<Field> GetRandomValidField(List<Field> fields, int shipSize)
         {
             Field randomField = null;
@@ -118,6 +128,13 @@ namespace Battleship_Mystery.Business
 
         }
 
+        /// <summary>
+        /// Erhalte Felder in welchem ein Schiff plaziert werden kann
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="size"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected List<Field> GetValidFieldsByShipLenght(Field field, int size, List<Field> fields)
         {
             if (field == null) return null;
@@ -140,6 +157,12 @@ namespace Battleship_Mystery.Business
             return validFields[index];
         }
 
+        /// <summary>
+        /// Erfahre ob diese Felder verfügbar sind
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <param name="allFields"></param>
+        /// <returns></returns>
         protected bool AreFieldsAvailable(List<Field> fields, List<Field> allFields)
         {
             foreach (Field field in fields)
@@ -152,6 +175,14 @@ namespace Battleship_Mystery.Business
             return true;
         }
 
+        /// <summary>
+        /// Erhalte Felder in einer Bestimmte richtung
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="size"></param>
+        /// <param name="fields"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
         protected List<Field> GetFieldsByDirection(Field field, int size, List<Field> fields, string direction)
         {
             List<Field> upperFields = new List<Field>();
@@ -166,30 +197,60 @@ namespace Battleship_Mystery.Business
             return upperFields;
         }
 
+        /// <summary>
+        /// Erhalte das Feld darüber
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected Field GetFieldAbove(Field field, List<Field> fields)
         {
             if (field == null) return null;
             return GetFieldFromCoordinate(field.XCoordinate, field.YCoordinate - 1, fields);
         }
 
+        /// <summary>
+        /// Erhalte das linke Feld
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected Field GetFieldLeft(Field field, List<Field> fields)
         {
             if (field == null) return null;
             return GetFieldFromCoordinate(field.XCoordinate -1, field.YCoordinate, fields);
         }
 
+        /// <summary>
+        /// Erhalte das untere Feld
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected Field GetFieldDown(Field field, List<Field> fields)
         {
             if (field == null) return null;
             return GetFieldFromCoordinate(field.XCoordinate, field.YCoordinate + 1, fields);
         }
 
+        /// <summary>
+        /// Erhalte das rechte Feld
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected Field GetFieldRight(Field field, List<Field> fields)
         {
             if (field == null) return null;
             return GetFieldFromCoordinate(field.XCoordinate + 1, field.YCoordinate, fields);
         }
 
+        /// <summary>
+        /// Sind um das Feld Freie Felder
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected bool HasFreeFieldsArround(Field field, List<Field> fields)
         {
             if (field == null) return true;
@@ -207,6 +268,12 @@ namespace Battleship_Mystery.Business
             return true;
         }
 
+        /// <summary>
+        /// Erhalte jedes Feld um ein Bestimmtes Feld
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected List<Field> GetFieldsArround(Field field, List<Field> fields)
         {
             return new List<Field>()
@@ -222,11 +289,23 @@ namespace Battleship_Mystery.Business
             };
         }
 
+        /// <summary>
+        /// Erhalte ein Feld anhand von Kordinaten
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         protected Field GetFieldFromCoordinate(int x, int y, List<Field> fields)
         {
             return fields.Find(field => field.XCoordinate == x && field.YCoordinate == y);
         }
 
+        /// <summary>
+        /// Erhalte eine Random Schiffgrösse
+        /// </summary>
+        /// <param name="availableCount"></param>
+        /// <returns></returns>
         protected int GetRandomShipCountFromNumerOfShips(int availableCount)
         {
             Random random = new Random();
@@ -238,6 +317,10 @@ namespace Battleship_Mystery.Business
             return random.Next(1, maxShipSize +1);
         }
 
+        /// <summary>
+        /// Erhalte alle Felder
+        /// </summary>
+        /// <returns></returns>
         protected List<Field> GetFieldList()
         {
             List<Field> fields = new List<Field>();
@@ -251,6 +334,10 @@ namespace Battleship_Mystery.Business
             return fields;
         }
 
+        /// <summary>
+        /// Erhalte alle Schiffsgrössen
+        /// </summary>
+        /// <returns></returns>
         protected List<int> GetShipSizes()
         {
             int availableShipCount = NumberOfShips;
@@ -264,6 +351,10 @@ namespace Battleship_Mystery.Business
             return shipSizes;
         }
 
+        /// <summary>
+        /// Erhalte alle Schiffe
+        /// </summary>
+        /// <returns></returns>
         protected List<Ship> GetShips()
         {
             List<Ship> ships = new List<Ship>();
