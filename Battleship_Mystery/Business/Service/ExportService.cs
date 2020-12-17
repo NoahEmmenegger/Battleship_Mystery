@@ -21,8 +21,7 @@ namespace Battleship_Mystery.Business.Service
         /// <param name="mystery">Das Räsel, welches exportiert werden soll</param>
         /// <param name="filePath">Der Pfad von der PDF Datei</param>
         public static void Export(Mystery mystery, string filePath)
-        {
-   
+        { 
             Document doc = new Document();
             PdfPTable table = CreateTable(mystery, false);
             PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));

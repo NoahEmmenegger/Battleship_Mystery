@@ -69,14 +69,21 @@ namespace Battleship_Mystery.ViewModels
 
         private void SaveVirtualMystery(object parameter)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "export.txt";
-            saveFileDialog.DefaultExt = "txt";
-            saveFileDialog.Filter = "txt files (*.txt) | *.txt";
-
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                SaveLoadService.Save(Mystery, saveFileDialog.FileName);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "export.txt";
+                saveFileDialog.DefaultExt = "txt";
+                saveFileDialog.Filter = "txt files (*.txt) | *.txt";
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    SaveLoadService.Save(Mystery, saveFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -89,37 +96,58 @@ namespace Battleship_Mystery.ViewModels
 
         private void LoadVirtualMystery(object parameter)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                Mystery = SaveLoadService.Load(Mystery, openFileDialog.FileName);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    Mystery = SaveLoadService.Load(Mystery, openFileDialog.FileName);
+                }
+
+                MainWindow mainWindow = MainWindow.GetSingelton();
+                mainWindow.Show();
+                mainWindow.UpdatePlayingField(this);
             }
-
-            MainWindow mainWindow = MainWindow.GetSingelton();
-            mainWindow.Show();
-            mainWindow.UpdatePlayingField(this);
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler beim Laden", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SavePDF(object parameter)
         {
-            SaveFileDialog openFileDialog = new SaveFileDialog();
-            openFileDialog.FileName = "Mystery";
-            openFileDialog.Filter = "Pdf Files|*.pdf";
-            if(openFileDialog.ShowDialog() == true)
+            try
             {
-                ExportService.Export(Mystery, openFileDialog.FileName);
-            }           
+                SaveFileDialog openFileDialog = new SaveFileDialog();
+                openFileDialog.FileName = "Mystery";
+                openFileDialog.Filter = "Pdf Files|*.pdf";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    ExportService.Export(Mystery, openFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+    
         }
 
         private void SavePDFSolution(object parameter)
         {
-            SaveFileDialog openFileDialog = new SaveFileDialog();
-            openFileDialog.FileName = "Mystery Solution";
-            openFileDialog.Filter = "Pdf Files|*.pdf";
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                ExportService.ExportSolution(Mystery, openFileDialog.FileName);
+                SaveFileDialog openFileDialog = new SaveFileDialog();
+                openFileDialog.FileName = "Mystery Solution";
+                openFileDialog.Filter = "Pdf Files|*.pdf";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    ExportService.ExportSolution(Mystery, openFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler beim Speichern", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
